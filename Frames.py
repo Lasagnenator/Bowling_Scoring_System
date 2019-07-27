@@ -23,13 +23,11 @@ class MainFrame ( wx.Frame ):
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_scrolledWindow1 = wx.ScrolledWindow( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
-		self.m_scrolledWindow1.SetScrollRate( 5, 5 )
 		bSizer2 = wx.BoxSizer( wx.VERTICAL )
 
 		bSizer4 = wx.BoxSizer( wx.HORIZONTAL )
 
-		self.m_staticText121 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"Players", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText121 = wx.StaticText( self, wx.ID_ANY, u"Players", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText121.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText121, 0, wx.ALL, 5 )
@@ -37,7 +35,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 65, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText2 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"1", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, u"1", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText2.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText2, 0, wx.ALL, 5 )
@@ -45,7 +43,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText3 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"2", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"2", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText3.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText3, 0, wx.ALL, 5 )
@@ -53,7 +51,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText6 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"3", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText6 = wx.StaticText( self, wx.ID_ANY, u"3", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText6.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText6, 0, wx.ALL, 5 )
@@ -61,7 +59,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText7 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"4", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText7 = wx.StaticText( self, wx.ID_ANY, u"4", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText7.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText7, 0, wx.ALL, 5 )
@@ -69,7 +67,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText8 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"5", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText8 = wx.StaticText( self, wx.ID_ANY, u"5", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText8.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText8, 0, wx.ALL, 5 )
@@ -77,7 +75,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText9 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"6", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"6", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText9.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText9, 0, wx.ALL, 5 )
@@ -85,7 +83,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText10 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"7", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText10 = wx.StaticText( self, wx.ID_ANY, u"7", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText10.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText10, 0, wx.ALL, 5 )
@@ -93,7 +91,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText11 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"8", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText11 = wx.StaticText( self, wx.ID_ANY, u"8", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText11.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText11, 0, wx.ALL, 5 )
@@ -101,7 +99,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText12 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"9", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText12 = wx.StaticText( self, wx.ID_ANY, u"9", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText12.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText12, 0, wx.ALL, 5 )
@@ -109,7 +107,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText13 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"10", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText13 = wx.StaticText( self, wx.ID_ANY, u"10", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText13.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText13, 0, wx.ALL, 5 )
@@ -117,7 +115,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText131 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"Total", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText131 = wx.StaticText( self, wx.ID_ANY, u"Total", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText131.Wrap( -1 )
 
 		bSizer4.Add( self.m_staticText131, 0, wx.ALL, 5 )
@@ -127,7 +125,7 @@ class MainFrame ( wx.Frame ):
 
 		bSizer3 = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_scrolledWindow2 = wx.ScrolledWindow( self.m_scrolledWindow1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
+		self.m_scrolledWindow2 = wx.ScrolledWindow( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
 		self.m_scrolledWindow2.SetScrollRate( 5, 5 )
 		self.m_scrolledWindow2.SetMaxSize( wx.Size( -1,580 ) )
 
@@ -150,53 +148,50 @@ class MainFrame ( wx.Frame ):
 
 		bSizer7 = wx.BoxSizer( wx.HORIZONTAL )
 
-		self.m_radioBtn1 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"-", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn1 = wx.RadioButton( self, wx.ID_ANY, u"-", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn1, 0, wx.ALL, 5 )
 
-		self.m_radioBtn2 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"1", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn2 = wx.RadioButton( self, wx.ID_ANY, u"1", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn2, 0, wx.ALL, 5 )
 
-		self.m_radioBtn3 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"2", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn3 = wx.RadioButton( self, wx.ID_ANY, u"2", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn3, 0, wx.ALL, 5 )
 
-		self.m_radioBtn4 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"3", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn4 = wx.RadioButton( self, wx.ID_ANY, u"3", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn4, 0, wx.ALL, 5 )
 
-		self.m_radioBtn5 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"4", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn5 = wx.RadioButton( self, wx.ID_ANY, u"4", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn5, 0, wx.ALL, 5 )
 
-		self.m_radioBtn6 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"5", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn6 = wx.RadioButton( self, wx.ID_ANY, u"5", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn6, 0, wx.ALL, 5 )
 
-		self.m_radioBtn7 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"6", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn7 = wx.RadioButton( self, wx.ID_ANY, u"6", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn7, 0, wx.ALL, 5 )
 
-		self.m_radioBtn8 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"7", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn8 = wx.RadioButton( self, wx.ID_ANY, u"7", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn8, 0, wx.ALL, 5 )
 
-		self.m_radioBtn9 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"8", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn9 = wx.RadioButton( self, wx.ID_ANY, u"8", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn9, 0, wx.ALL, 5 )
 
-		self.m_radioBtn10 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"9", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn10 = wx.RadioButton( self, wx.ID_ANY, u"9", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn10, 0, wx.ALL, 5 )
 
-		self.m_radioBtn11 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"X", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn11 = wx.RadioButton( self, wx.ID_ANY, u"X", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn11, 0, wx.ALL, 5 )
 
-		self.m_radioBtn12 = wx.RadioButton( self.m_scrolledWindow1, wx.ID_ANY, u"?", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_radioBtn12 = wx.RadioButton( self, wx.ID_ANY, u"/", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer7.Add( self.m_radioBtn12, 0, wx.ALL, 5 )
 
 
 		bSizer2.Add( bSizer7, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
-		self.EnterButton = wx.Button( self.m_scrolledWindow1, wx.ID_ANY, u"Enter Score", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.EnterButton = wx.Button( self, wx.ID_ANY, u"Enter Score", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer2.Add( self.EnterButton, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
 
 
-		self.m_scrolledWindow1.SetSizer( bSizer2 )
-		self.m_scrolledWindow1.Layout()
-		bSizer2.Fit( self.m_scrolledWindow1 )
-		bSizer1.Add( self.m_scrolledWindow1, 1, wx.EXPAND |wx.ALL, 5 )
+		bSizer1.Add( bSizer2, 1, wx.EXPAND, 5 )
 
 
 		self.SetSizer( bSizer1 )
@@ -370,20 +365,20 @@ class Frame10Panel ( wx.Panel ):
 
 		bSizer2 = wx.BoxSizer( wx.HORIZONTAL )
 
-		self.m_textCtrl49 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 30,-1 ), wx.TE_CENTER )
-		bSizer2.Add( self.m_textCtrl49, 0, 0, 5 )
+		self.Bowl1 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 30,-1 ), wx.TE_CENTER|wx.TE_READONLY )
+		bSizer2.Add( self.Bowl1, 0, 0, 5 )
 
-		self.m_textCtrl249 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 30,-1 ), wx.TE_CENTER )
-		bSizer2.Add( self.m_textCtrl249, 0, 0, 5 )
+		self.Bowl2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 30,-1 ), wx.TE_CENTER|wx.TE_READONLY )
+		bSizer2.Add( self.Bowl2, 0, 0, 5 )
 
-		self.m_textCtrl86 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 30,-1 ), 0 )
-		bSizer2.Add( self.m_textCtrl86, 0, 0, 5 )
+		self.Bowl3 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 30,-1 ), wx.TE_READONLY )
+		bSizer2.Add( self.Bowl3, 0, 0, 5 )
 
 
 		bSizer1.Add( bSizer2, 0, 0, 5 )
 
-		self.m_textCtrl259 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 90,-1 ), wx.TE_RIGHT )
-		bSizer1.Add( self.m_textCtrl259, 0, 0, 5 )
+		self.SubTotal = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 90,-1 ), wx.TE_READONLY|wx.TE_RIGHT )
+		bSizer1.Add( self.SubTotal, 0, 0, 5 )
 
 
 		self.SetSizer( bSizer1 )
