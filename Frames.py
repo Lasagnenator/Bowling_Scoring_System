@@ -125,16 +125,16 @@ class MainFrame ( wx.Frame ):
 
 		bSizer3 = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_scrolledWindow2 = wx.ScrolledWindow( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
+		self.m_scrolledWindow2 = wx.ScrolledWindow( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.VSCROLL )
 		self.m_scrolledWindow2.SetScrollRate( 5, 5 )
 		self.m_scrolledWindow2.SetMaxSize( wx.Size( -1,580 ) )
 
 		bSizer8 = wx.BoxSizer( wx.VERTICAL )
 
-		self.PlayerPanel1 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.PlayerPanel1 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
 		bSizer8.Add( self.PlayerPanel1, 0, wx.ALL, 5 )
 
-		self.PlayerPanel2 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.PlayerPanel2 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
 		bSizer8.Add( self.PlayerPanel2, 0, wx.ALL, 5 )
 
 
@@ -297,7 +297,7 @@ class NamesOfPlayersFrame ( wx.Frame ):
 
 class PlayerPanel ( wx.Panel ):
 
-	def __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ):
+	def __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,90 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ):
 		wx.Panel.__init__ ( self, parent, id = id, pos = pos, size = size, style = style, name = name )
 
 		bSizer1 = wx.BoxSizer( wx.HORIZONTAL )
@@ -307,46 +307,47 @@ class PlayerPanel ( wx.Panel ):
 
 		gSizer1 = wx.GridSizer( 1, 11, 0, 0 )
 
-		self.Frame1 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer1.Add( self.Frame1, 0, 0, 5 )
+		self.Frame1 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 97,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		gSizer1.Add( self.Frame1, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-		self.Frame2 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer1.Add( self.Frame2, 0, 0, 5 )
+		self.Frame2 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 97,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		gSizer1.Add( self.Frame2, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-		self.Frame3 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer1.Add( self.Frame3, 0, 0, 5 )
+		self.Frame3 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 97,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		gSizer1.Add( self.Frame3, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-		self.Frame4 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer1.Add( self.Frame4, 0, 0, 5 )
+		self.Frame4 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 97,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		gSizer1.Add( self.Frame4, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-		self.Frame5 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer1.Add( self.Frame5, 0, 0, 5 )
+		self.Frame5 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 97,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		gSizer1.Add( self.Frame5, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-		self.Frame6 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer1.Add( self.Frame6, 0, 0, 5 )
+		self.Frame6 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 97,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		gSizer1.Add( self.Frame6, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-		self.Frame7 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer1.Add( self.Frame7, 0, 0, 5 )
+		self.Frame7 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 97,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		gSizer1.Add( self.Frame7, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-		self.Frame8 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer1.Add( self.Frame8, 0, 0, 5 )
+		self.Frame8 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 97,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		gSizer1.Add( self.Frame8, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-		self.Frame9 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer1.Add( self.Frame9, 0, 0, 5 )
+		self.Frame9 = SingleFramePanel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 97,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		gSizer1.Add( self.Frame9, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-		self.Frame10 = Frame10Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer1.Add( self.Frame10, 1, wx.EXPAND, 5 )
+		self.Frame10 = Frame10Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 97,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		gSizer1.Add( self.Frame10, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-		self.Total = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		gSizer1.Add( self.Total, 0, wx.EXPAND, 5 )
+		self.Total = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 90,90 ), wx.TE_CENTER|wx.TE_READONLY )
+		self.Total.SetMaxSize( wx.Size( 90,90 ) )
+
+		gSizer1.Add( self.Total, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
 
-		bSizer1.Add( gSizer1, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
+		bSizer1.Add( gSizer1, 0, wx.ALIGN_LEFT|wx.ALIGN_CENTER_VERTICAL, 0 )
 
 
 		self.SetSizer( bSizer1 )
 		self.Layout()
-		bSizer1.Fit( self )
 
 	def __del__( self ):
 		pass
@@ -358,7 +359,7 @@ class PlayerPanel ( wx.Panel ):
 
 class Frame10Panel ( wx.Panel ):
 
-	def __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ):
+	def __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( 97,90 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ):
 		wx.Panel.__init__ ( self, parent, id = id, pos = pos, size = size, style = style, name = name )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
@@ -383,7 +384,6 @@ class Frame10Panel ( wx.Panel ):
 
 		self.SetSizer( bSizer1 )
 		self.Layout()
-		bSizer1.Fit( self )
 
 	def __del__( self ):
 		pass
@@ -395,8 +395,11 @@ class Frame10Panel ( wx.Panel ):
 
 class SingleFramePanel ( wx.Panel ):
 
-	def __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ):
+	def __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( 97,90 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ):
 		wx.Panel.__init__ ( self, parent, id = id, pos = pos, size = size, style = style, name = name )
+
+		self.SetMinSize( wx.Size( 97,90 ) )
+		self.SetMaxSize( wx.Size( 97,90 ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
@@ -409,7 +412,7 @@ class SingleFramePanel ( wx.Panel ):
 		bSizer2.Add( self.Bowl2, 0, 0, 5 )
 
 
-		bSizer1.Add( bSizer2, 0, 0, 5 )
+		bSizer1.Add( bSizer2, 0, 0, 0 )
 
 		self.SubTotal = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 90,-1 ), wx.TE_READONLY|wx.TE_RIGHT )
 		bSizer1.Add( self.SubTotal, 0, 0, 5 )
@@ -417,7 +420,6 @@ class SingleFramePanel ( wx.Panel ):
 
 		self.SetSizer( bSizer1 )
 		self.Layout()
-		bSizer1.Fit( self )
 
 	def __del__( self ):
 		pass

@@ -925,16 +925,16 @@
                             <property name="border">5</property>
                             <property name="flag">wxEXPAND</property>
                             <property name="proportion">1</property>
-                            <object class="wxBoxSizer" expanded="0">
+                            <object class="wxBoxSizer" expanded="1">
                                 <property name="minimum_size"></property>
                                 <property name="name">bSizer3</property>
                                 <property name="orient">wxVERTICAL</property>
                                 <property name="permission">none</property>
-                                <object class="sizeritem" expanded="0">
+                                <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
                                     <property name="flag">wxALL|wxALIGN_CENTER_HORIZONTAL|wxEXPAND</property>
                                     <property name="proportion">1</property>
-                                    <object class="wxScrolledWindow" expanded="0">
+                                    <object class="wxScrolledWindow" expanded="1">
                                         <property name="BottomDockable">1</property>
                                         <property name="LeftDockable">1</property>
                                         <property name="RightDockable">1</property>
@@ -986,8 +986,8 @@
                                         <property name="tooltip"></property>
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
-                                        <property name="window_style">wxHSCROLL|wxVSCROLL</property>
-                                        <object class="wxBoxSizer" expanded="0">
+                                        <property name="window_style">wxVSCROLL</property>
+                                        <object class="wxBoxSizer" expanded="1">
                                             <property name="minimum_size"></property>
                                             <property name="name">bSizer8</property>
                                             <property name="orient">wxVERTICAL</property>
@@ -1040,13 +1040,13 @@
                                                     <property name="pos"></property>
                                                     <property name="resize">Resizable</property>
                                                     <property name="show">1</property>
-                                                    <property name="size"></property>
-                                                    <property name="subclass">PlayerPanel; ; forward_declare</property>
+                                                    <property name="size">-1,90</property>
+                                                    <property name="subclass">PlayerPanel; ; Not forward_declare</property>
                                                     <property name="toolbar_pane">0</property>
                                                     <property name="tooltip"></property>
                                                     <property name="window_extra_style"></property>
                                                     <property name="window_name"></property>
-                                                    <property name="window_style">wxTAB_TRAVERSAL</property>
+                                                    <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                                                 </object>
                                             </object>
                                             <object class="sizeritem" expanded="0">
@@ -1097,13 +1097,13 @@
                                                     <property name="pos"></property>
                                                     <property name="resize">Resizable</property>
                                                     <property name="show">1</property>
-                                                    <property name="size"></property>
+                                                    <property name="size">-1,90</property>
                                                     <property name="subclass">PlayerPanel; ; forward_declare</property>
                                                     <property name="toolbar_pane">0</property>
                                                     <property name="tooltip"></property>
                                                     <property name="window_extra_style"></property>
                                                     <property name="window_name"></property>
-                                                    <property name="window_style">wxTAB_TRAVERSAL</property>
+                                                    <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                                                 </object>
                                             </object>
                                         </object>
@@ -2536,7 +2536,7 @@
             <property name="minimum_size"></property>
             <property name="name">PlayerPanel</property>
             <property name="pos"></property>
-            <property name="size">-1,-1</property>
+            <property name="size">-1,90</property>
             <property name="subclass">; ; forward_declare</property>
             <property name="tooltip"></property>
             <property name="window_extra_style"></property>
@@ -2612,8 +2612,8 @@
                     </object>
                 </object>
                 <object class="sizeritem" expanded="1">
-                    <property name="border">5</property>
-                    <property name="flag">wxALIGN_CENTER_VERTICAL</property>
+                    <property name="border">0</property>
+                    <property name="flag">wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</property>
                     <property name="proportion">0</property>
                     <object class="wxGridSizer" expanded="1">
                         <property name="cols">11</property>
@@ -2625,7 +2625,7 @@
                         <property name="vgap">0</property>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag"></property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
@@ -2671,18 +2671,18 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
+                                <property name="size">97,90</property>
                                 <property name="subclass">SingleFramePanel; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style">wxTAB_TRAVERSAL</property>
+                                <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                             </object>
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag"></property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
@@ -2728,18 +2728,18 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
+                                <property name="size">97,90</property>
                                 <property name="subclass">SingleFramePanel; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style">wxTAB_TRAVERSAL</property>
+                                <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                             </object>
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag"></property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
@@ -2785,18 +2785,18 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
+                                <property name="size">97,90</property>
                                 <property name="subclass">SingleFramePanel; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style">wxTAB_TRAVERSAL</property>
+                                <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                             </object>
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag"></property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
@@ -2842,18 +2842,18 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
+                                <property name="size">97,90</property>
                                 <property name="subclass">SingleFramePanel; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style">wxTAB_TRAVERSAL</property>
+                                <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                             </object>
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag"></property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
@@ -2899,18 +2899,18 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
+                                <property name="size">97,90</property>
                                 <property name="subclass">SingleFramePanel; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style">wxTAB_TRAVERSAL</property>
+                                <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                             </object>
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag"></property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
@@ -2956,18 +2956,18 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
+                                <property name="size">97,90</property>
                                 <property name="subclass">SingleFramePanel; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style">wxTAB_TRAVERSAL</property>
+                                <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                             </object>
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag"></property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
@@ -3013,18 +3013,18 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
+                                <property name="size">97,90</property>
                                 <property name="subclass">SingleFramePanel; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style">wxTAB_TRAVERSAL</property>
+                                <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                             </object>
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag"></property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
@@ -3070,18 +3070,18 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
+                                <property name="size">97,90</property>
                                 <property name="subclass">SingleFramePanel; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style">wxTAB_TRAVERSAL</property>
+                                <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                             </object>
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag"></property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
@@ -3127,19 +3127,19 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
+                                <property name="size">97,90</property>
                                 <property name="subclass">SingleFramePanel; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style">wxTAB_TRAVERSAL</property>
+                                <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                             </object>
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag">wxEXPAND</property>
-                            <property name="proportion">1</property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
+                            <property name="proportion">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
                                 <property name="LeftDockable">1</property>
@@ -3184,18 +3184,18 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
+                                <property name="size">97,90</property>
                                 <property name="subclass">Frame10Panel; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style">wxTAB_TRAVERSAL</property>
+                                <property name="window_style">wxBORDER_NONE|wxTAB_TRAVERSAL</property>
                             </object>
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag">wxEXPAND</property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">0</property>
                             <object class="wxTextCtrl" expanded="0">
                                 <property name="BottomDockable">1</property>
@@ -3227,7 +3227,7 @@
                                 <property name="id">wxID_ANY</property>
                                 <property name="max_size"></property>
                                 <property name="maximize_button">0</property>
-                                <property name="maximum_size"></property>
+                                <property name="maximum_size">90,90</property>
                                 <property name="maxlength"></property>
                                 <property name="min_size"></property>
                                 <property name="minimize_button">0</property>
@@ -3242,8 +3242,8 @@
                                 <property name="pos"></property>
                                 <property name="resize">Resizable</property>
                                 <property name="show">1</property>
-                                <property name="size"></property>
-                                <property name="style">wxTE_READONLY</property>
+                                <property name="size">90,90</property>
+                                <property name="style">wxTE_CENTER|wxTE_READONLY</property>
                                 <property name="subclass">; ; forward_declare</property>
                                 <property name="toolbar_pane">0</property>
                                 <property name="tooltip"></property>
@@ -3261,7 +3261,7 @@
                 </object>
             </object>
         </object>
-        <object class="Panel" expanded="0">
+        <object class="Panel" expanded="1">
             <property name="aui_managed">0</property>
             <property name="aui_manager_style">wxAUI_MGR_DEFAULT</property>
             <property name="bg"></property>
@@ -3277,7 +3277,7 @@
             <property name="minimum_size"></property>
             <property name="name">Frame10Panel</property>
             <property name="pos"></property>
-            <property name="size">-1,-1</property>
+            <property name="size">97,90</property>
             <property name="subclass">; ; forward_declare</property>
             <property name="tooltip"></property>
             <property name="window_extra_style"></property>
@@ -3569,11 +3569,11 @@
             <property name="font"></property>
             <property name="hidden">0</property>
             <property name="id">wxID_ANY</property>
-            <property name="maximum_size"></property>
-            <property name="minimum_size"></property>
+            <property name="maximum_size">97,90</property>
+            <property name="minimum_size">97,90</property>
             <property name="name">SingleFramePanel</property>
             <property name="pos"></property>
-            <property name="size">-1,-1</property>
+            <property name="size">97,90</property>
             <property name="subclass">; ; forward_declare</property>
             <property name="tooltip"></property>
             <property name="window_extra_style"></property>
@@ -3585,7 +3585,7 @@
                 <property name="orient">wxVERTICAL</property>
                 <property name="permission">none</property>
                 <object class="sizeritem" expanded="1">
-                    <property name="border">5</property>
+                    <property name="border">0</property>
                     <property name="flag"></property>
                     <property name="proportion">0</property>
                     <object class="wxBoxSizer" expanded="1">
