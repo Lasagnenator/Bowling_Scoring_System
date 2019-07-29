@@ -211,8 +211,42 @@ class MainFrame ( wx.Frame ):
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.m_radioBtn1.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn2.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn3.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn4.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn5.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn6.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn7.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn8.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn9.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn10.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn11.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn12.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.EnterButton.Bind( wx.EVT_BUTTON, self.EnterScore )
+
 	def __del__( self ):
 		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def UpdateCurrentScoreInput( self, event ):
+		event.Skip()
+
+
+
+
+
+
+
+
+
+
+
+
+	def EnterScore( self, event ):
+		event.Skip()
 
 
 ###########################################################################
@@ -250,8 +284,16 @@ class NumberOfPlayersFrame ( wx.Frame ):
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.OkButton.Bind( wx.EVT_BUTTON, self.OkButtonClicked )
+
 	def __del__( self ):
 		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def OkButtonClicked( self, event ):
+		event.Skip()
 
 
 ###########################################################################
@@ -299,8 +341,16 @@ class NamesOfPlayersFrame ( wx.Frame ):
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.OkButton.Bind( wx.EVT_BUTTON, self.OkButtonClicked )
+
 	def __del__( self ):
 		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def OkButtonClicked( self, event ):
+		event.Skip()
 
 
 ###########################################################################
