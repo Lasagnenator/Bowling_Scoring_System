@@ -129,30 +129,12 @@ class MainFrame ( wx.Frame ):
 		self.m_scrolledWindow2.SetScrollRate( 5, 5 )
 		self.m_scrolledWindow2.SetMaxSize( wx.Size( -1,580 ) )
 
-		bSizer8 = wx.BoxSizer( wx.VERTICAL )
-
-		self.PlayerPanel1 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
-		bSizer8.Add( self.PlayerPanel1, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
-
-		self.PlayerPanel2 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
-		bSizer8.Add( self.PlayerPanel2, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
-
-		self.PlayerPanel3 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
-		bSizer8.Add( self.PlayerPanel3, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
-
-		self.PlayerPanel4 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
-		bSizer8.Add( self.PlayerPanel4, 0, wx.TOP|wx.BOTTOM|wx.LEFT|wx.EXPAND, 5 )
-
-		self.PlayerPanel5 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
-		bSizer8.Add( self.PlayerPanel5, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
-
-		self.PlayerPanel6 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
-		bSizer8.Add( self.PlayerPanel6, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
+		self.bSizer8 = wx.BoxSizer( wx.VERTICAL )
 
 
-		self.m_scrolledWindow2.SetSizer( bSizer8 )
+		self.m_scrolledWindow2.SetSizer( self.bSizer8 )
 		self.m_scrolledWindow2.Layout()
-		bSizer8.Fit( self.m_scrolledWindow2 )
+		self.bSizer8.Fit( self.m_scrolledWindow2 )
 		bSizer3.Add( self.m_scrolledWindow2, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.EXPAND, 0 )
 
 
@@ -212,6 +194,7 @@ class MainFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
+		self.Bind( wx.EVT_SHOW, self.OnShow )
 		self.m_radioBtn1.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
 		self.m_radioBtn2.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
 		self.m_radioBtn3.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
@@ -231,6 +214,9 @@ class MainFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
+	def OnShow( self, event ):
+		event.Skip()
+
 	def UpdateCurrentScoreInput( self, event ):
 		event.Skip()
 
@@ -269,8 +255,8 @@ class NumberOfPlayersFrame ( wx.Frame ):
 
 		bSizer176.Add( self.m_staticText22, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
-		self.m_spinCtrl2 = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 1, 10, 10 )
-		bSizer176.Add( self.m_spinCtrl2, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		self.PlayerNums = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTER_HORIZONTAL|wx.SP_ARROW_KEYS, 1, 15, 2 )
+		bSizer176.Add( self.PlayerNums, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
 		self.OkButton = wx.Button( self, wx.ID_ANY, u"OK", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer176.Add( self.OkButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
@@ -297,51 +283,42 @@ class NumberOfPlayersFrame ( wx.Frame ):
 
 
 ###########################################################################
-## Class NamesOfPlayersFrame
+## Class NumberOfPlayers
 ###########################################################################
 
-class NamesOfPlayersFrame ( wx.Frame ):
+class NumberOfPlayers ( wx.Dialog ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Names of Players", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.FRAME_NO_TASKBAR|wx.STAY_ON_TOP|wx.SYSTEM_MENU|wx.TAB_TRAVERSAL )
+		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"NumberOfPlayers", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_DIALOG_STYLE|wx.STAY_ON_TOP )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
-		bSizer177 = wx.BoxSizer( wx.VERTICAL )
+		bSizer28 = wx.BoxSizer( wx.HORIZONTAL )
 
-		self.m_staticText24 = wx.StaticText( self, wx.ID_ANY, u"Names of players", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText24.Wrap( -1 )
+		bSizer176 = wx.BoxSizer( wx.VERTICAL )
 
-		bSizer177.Add( self.m_staticText24, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		self.m_staticText22 = wx.StaticText( self, wx.ID_ANY, u"Number of Players", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText22.Wrap( -1 )
 
-		bSizer180 = wx.BoxSizer( wx.VERTICAL )
+		bSizer176.Add( self.m_staticText22, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
-		bSizer181 = wx.BoxSizer( wx.HORIZONTAL )
-
-		self.m_staticText25 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText25.Wrap( -1 )
-
-		bSizer181.Add( self.m_staticText25, 0, wx.ALL, 5 )
-
-		self.m_textCtrl257 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer181.Add( self.m_textCtrl257, 0, wx.ALL, 5 )
-
-
-		bSizer180.Add( bSizer181, 1, wx.EXPAND, 5 )
-
-
-		bSizer177.Add( bSizer180, 1, wx.EXPAND, 5 )
+		self.PlayerNums = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTER_HORIZONTAL|wx.SP_ARROW_KEYS, 1, 15, 2 )
+		bSizer176.Add( self.PlayerNums, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
 		self.OkButton = wx.Button( self, wx.ID_ANY, u"OK", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer177.Add( self.OkButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		bSizer176.Add( self.OkButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
 
-		self.SetSizer( bSizer177 )
+		bSizer28.Add( bSizer176, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+
+		self.SetSizer( bSizer28 )
 		self.Layout()
 
 		self.Centre( wx.BOTH )
 
 		# Connect Events
+		self.Bind( wx.EVT_CLOSE, self.OnClose )
 		self.OkButton.Bind( wx.EVT_BUTTON, self.OkButtonClicked )
 
 	def __del__( self ):
@@ -349,6 +326,9 @@ class NamesOfPlayersFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
+	def OnClose( self, event ):
+		event.Skip()
+
 	def OkButtonClicked( self, event ):
 		event.Skip()
 

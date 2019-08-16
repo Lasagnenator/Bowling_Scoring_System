@@ -58,25 +58,6 @@ def SelectFrame(panel, num):
 def SelectBowl(player, frame, bowl):
     return eval("playerList[{}].Frame{}.Bowl{}".format(player, frame, bowl))
 
-class mainWindow(Frames.MainFrame):
-    def __init__(self, parent):
-        global buttonList
-        global playerList
-        global CurrentPlayer, CurrentFrame, CurrentBowl, TotalPlayers
-        Frames.MainFrame.__init__(self, parent)
-        buttonList = [self.m_radioBtn1,self.m_radioBtn2,self.m_radioBtn3,self.m_radioBtn4,self.m_radioBtn5,self.m_radioBtn6,self.m_radioBtn7,self.m_radioBtn8,self.m_radioBtn9,self.m_radioBtn10,self.m_radioBtn11,self.m_radioBtn12]
-        playerList = [self.PlayerPanel1,self.PlayerPanel2,self.PlayerPanel3,self.PlayerPanel4,self.PlayerPanel5,self.PlayerPanel6]
-        TotalPlayers = len(playerList)
-        buttonList[11].Enable(False)
-
-    def EnterScore(self, event):
-        global buttonList
-        #this lets us iterate over the buttons but not have to increment a counter as
-        #automatically does this for us
-        for i, button in enumerate(buttonList):
-            if button.GetValue():
-                AddScore(i)
-
 def AddScore(Score):
     global CurrentPlayer, CurrentFrame, CurrentBowl
     DisplayScores(Score)
@@ -205,7 +186,54 @@ def CheckFrame():
         m.EnterButton.Enable(False)
         #end game
 
+NumberOfPlayers = 0
+
+early_exit = False
+class NumberOfPlayersFrame(Frames.NumberOfPlayers):
+    def __init__(self, parent):
+        Frames.NumberOfPlayers.__init__(self, parent)
+    def OkButtonClicked(self, event):
+        global NumberOfPlayers
+        NumberOfPlayers = self.PlayerNums.Value
+        self.Show(False)
+    def OnClose(self, event):
+        global early_exit
+        early_exit = True
+        self.Show(False)
+
+class mainWindow(Frames.MainFrame):
+    def __init__(self, parent):
+        global buttonList
+        global playerList
+        global CurrentPlayer, CurrentFrame, CurrentBowl, TotalPlayers
+        Frames.MainFrame.__init__(self, parent)
+        buttonList = [self.m_radioBtn1,self.m_radioBtn2,self.m_radioBtn3,self.m_radioBtn4,self.m_radioBtn5,self.m_radioBtn6,self.m_radioBtn7,self.m_radioBtn8,self.m_radioBtn9,self.m_radioBtn10,self.m_radioBtn11,self.m_radioBtn12]
+        #playerList = [self.PlayerPanel1,self.PlayerPanel2,self.PlayerPanel3,self.PlayerPanel4,self.PlayerPanel5,self.PlayerPanel6]
+        buttonList[11].Enable(False)
+
+    def EnterScore(self, event):
+        global buttonList
+        #this lets us iterate over the buttons but not have to increment a counter as
+        #automatically does this for us
+        for i, button in enumerate(buttonList):
+            if button.GetValue():
+                AddScore(i)
+
+    def OnShow(self, event):
+        global NumberOfPlayers
+        global playerList, TotalPlayers
+        for i in range(NumberOfPlayers):
+            playerList.append(Frames.PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL ))
+            self.bSizer8.Add( playerList[-1], 0, wx.TOP|wx.BOTTOM|wx.LEFT|wx.EXPAND, 5 )
+            playerList[-1].PlayerNameTextBox.Value = "Player {}".format(i+1)
+        TotalPlayers = len(playerList)
+        print(TotalPlayers)
+
 app = wx.App()
 m = mainWindow(None)
-m.Show(True)
-app.MainLoop()
+PlayerNumbers = NumberOfPlayersFrame(m)
+PlayerNumbers.ShowModal()
+PlayerNumbers.Show(False)
+if not early_exit:
+    m.Show(True)
+    app.MainLoop()
