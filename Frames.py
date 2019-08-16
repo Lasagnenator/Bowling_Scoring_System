@@ -127,7 +127,7 @@ class MainFrame ( wx.Frame ):
 
 		self.m_scrolledWindow2 = wx.ScrolledWindow( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.VSCROLL )
 		self.m_scrolledWindow2.SetScrollRate( 5, 5 )
-		self.m_scrolledWindow2.SetMaxSize( wx.Size( -1,580 ) )
+		self.m_scrolledWindow2.SetMaxSize( wx.Size( -1,590 ) )
 
 		self.bSizer8 = wx.BoxSizer( wx.VERTICAL )
 
@@ -190,32 +190,69 @@ class MainFrame ( wx.Frame ):
 
 		self.SetSizer( bSizer1 )
 		self.Layout()
+		self.m_menubar1 = wx.MenuBar( 0 )
+		self.m_menu1 = wx.Menu()
+		self.m_menuItem2 = wx.MenuItem( self.m_menu1, wx.ID_ANY, u"Generate Rankings", wx.EmptyString, wx.ITEM_NORMAL )
+		self.m_menu1.Append( self.m_menuItem2 )
+
+		self.m_menuItem1 = wx.MenuItem( self.m_menu1, wx.ID_ANY, u"Quit", wx.EmptyString, wx.ITEM_NORMAL )
+		self.m_menu1.Append( self.m_menuItem1 )
+
+		self.m_menubar1.Append( self.m_menu1, u"File" )
+
+		self.SetMenuBar( self.m_menubar1 )
+
 
 		self.Centre( wx.BOTH )
 
 		# Connect Events
+		self.Bind( wx.EVT_CLOSE, self.ExitProgram )
+		self.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.Bind( wx.EVT_SHOW, self.OnShow )
+		self.m_scrolledWindow2.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
+		self.m_radioBtn1.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn1.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn2.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn2.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn3.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn3.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn4.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn4.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn5.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn5.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn6.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn6.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn7.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn7.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn8.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn8.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn9.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn9.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn10.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn10.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn11.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn11.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
+		self.m_radioBtn12.Bind( wx.EVT_KEY_DOWN, self.OnKeyDown )
 		self.m_radioBtn12.Bind( wx.EVT_RADIOBUTTON, self.UpdateCurrentScoreInput )
 		self.EnterButton.Bind( wx.EVT_BUTTON, self.EnterScore )
+		self.Bind( wx.EVT_MENU, self.GenerateReport, id = self.m_menuItem2.GetId() )
+		self.Bind( wx.EVT_MENU, self.ExitProgram, id = self.m_menuItem1.GetId() )
 
 	def __del__( self ):
 		pass
 
 
 	# Virtual event handlers, overide them in your derived class
+	def ExitProgram( self, event ):
+		event.Skip()
+
+	def OnKeyDown( self, event ):
+		event.Skip()
+
 	def OnShow( self, event ):
 		event.Skip()
+
+
 
 	def UpdateCurrentScoreInput( self, event ):
 		event.Skip()
@@ -231,106 +268,23 @@ class MainFrame ( wx.Frame ):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 	def EnterScore( self, event ):
 		event.Skip()
 
-
-###########################################################################
-## Class NumberOfPlayersFrame
-###########################################################################
-
-class NumberOfPlayersFrame ( wx.Frame ):
-
-	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Number of Players", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.FRAME_NO_TASKBAR|wx.STAY_ON_TOP|wx.SYSTEM_MENU|wx.TAB_TRAVERSAL )
-
-		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
-
-		bSizer28 = wx.BoxSizer( wx.HORIZONTAL )
-
-		bSizer176 = wx.BoxSizer( wx.VERTICAL )
-
-		self.m_staticText22 = wx.StaticText( self, wx.ID_ANY, u"Number of Players", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText22.Wrap( -1 )
-
-		bSizer176.Add( self.m_staticText22, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-
-		self.PlayerNums = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTER_HORIZONTAL|wx.SP_ARROW_KEYS, 1, 15, 2 )
-		bSizer176.Add( self.PlayerNums, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-
-		self.OkButton = wx.Button( self, wx.ID_ANY, u"OK", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer176.Add( self.OkButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-
-
-		bSizer28.Add( bSizer176, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
-
-
-		self.SetSizer( bSizer28 )
-		self.Layout()
-
-		self.Centre( wx.BOTH )
-
-		# Connect Events
-		self.OkButton.Bind( wx.EVT_BUTTON, self.OkButtonClicked )
-
-	def __del__( self ):
-		pass
-
-
-	# Virtual event handlers, overide them in your derived class
-	def OkButtonClicked( self, event ):
+	def GenerateReport( self, event ):
 		event.Skip()
 
-
-###########################################################################
-## Class NumberOfPlayers
-###########################################################################
-
-class NumberOfPlayers ( wx.Dialog ):
-
-	def __init__( self, parent ):
-		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"NumberOfPlayers", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_DIALOG_STYLE|wx.STAY_ON_TOP )
-
-		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
-
-		bSizer28 = wx.BoxSizer( wx.HORIZONTAL )
-
-		bSizer176 = wx.BoxSizer( wx.VERTICAL )
-
-		self.m_staticText22 = wx.StaticText( self, wx.ID_ANY, u"Number of Players", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText22.Wrap( -1 )
-
-		bSizer176.Add( self.m_staticText22, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-
-		self.PlayerNums = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTER_HORIZONTAL|wx.SP_ARROW_KEYS, 1, 15, 2 )
-		bSizer176.Add( self.PlayerNums, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-
-		self.OkButton = wx.Button( self, wx.ID_ANY, u"OK", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer176.Add( self.OkButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-
-
-		bSizer28.Add( bSizer176, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
-
-
-		self.SetSizer( bSizer28 )
-		self.Layout()
-
-		self.Centre( wx.BOTH )
-
-		# Connect Events
-		self.Bind( wx.EVT_CLOSE, self.OnClose )
-		self.OkButton.Bind( wx.EVT_BUTTON, self.OkButtonClicked )
-
-	def __del__( self ):
-		pass
-
-
-	# Virtual event handlers, overide them in your derived class
-	def OnClose( self, event ):
-		event.Skip()
-
-	def OkButtonClicked( self, event ):
-		event.Skip()
 
 
 ###########################################################################
@@ -504,5 +458,103 @@ class SingleFramePanel ( wx.Panel ):
 
 	def __del__( self ):
 		pass
+
+
+###########################################################################
+## Class NumberOfPlayers
+###########################################################################
+
+class NumberOfPlayers ( wx.Dialog ):
+
+	def __init__( self, parent ):
+		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"NumberOfPlayers", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_DIALOG_STYLE|wx.STAY_ON_TOP )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+
+		bSizer28 = wx.BoxSizer( wx.HORIZONTAL )
+
+		bSizer176 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_staticText22 = wx.StaticText( self, wx.ID_ANY, u"Number of Players", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText22.Wrap( -1 )
+
+		bSizer176.Add( self.m_staticText22, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+		self.PlayerNums = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTER_HORIZONTAL|wx.SP_ARROW_KEYS, 1, 15, 2 )
+		bSizer176.Add( self.PlayerNums, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+		self.OkButton = wx.Button( self, wx.ID_ANY, u"OK", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer176.Add( self.OkButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		bSizer28.Add( bSizer176, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+
+		self.SetSizer( bSizer28 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+		# Connect Events
+		self.Bind( wx.EVT_CLOSE, self.OnClose )
+		self.OkButton.Bind( wx.EVT_BUTTON, self.OkButtonClicked )
+
+	def __del__( self ):
+		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def OnClose( self, event ):
+		event.Skip()
+
+	def OkButtonClicked( self, event ):
+		event.Skip()
+
+
+###########################################################################
+## Class GameOverDialog
+###########################################################################
+
+class GameOverDialog ( wx.Dialog ):
+
+	def __init__( self, parent ):
+		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"Results", pos = wx.DefaultPosition, size = wx.Size( 240,300 ), style = wx.DEFAULT_DIALOG_STYLE )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+
+		bSizer27 = wx.BoxSizer( wx.VERTICAL )
+
+		self.Report = wx.ListCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LC_REPORT|wx.LC_VRULES )
+		bSizer27.Add( self.Report, 1, wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+		bSizer29 = wx.BoxSizer( wx.HORIZONTAL )
+
+		self.m_staticText19 = wx.StaticText( self, wx.ID_ANY, u"Save to file", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText19.Wrap( -1 )
+
+		bSizer29.Add( self.m_staticText19, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.m_filePicker1 = wx.FilePickerCtrl( self, wx.ID_ANY, u"results.csv", u"Save results", u"*.csv", wx.DefaultPosition, wx.DefaultSize, wx.FLP_OVERWRITE_PROMPT|wx.FLP_SAVE|wx.FLP_SMALL )
+		bSizer29.Add( self.m_filePicker1, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		bSizer27.Add( bSizer29, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		self.SetSizer( bSizer27 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+		# Connect Events
+		self.m_filePicker1.Bind( wx.EVT_FILEPICKER_CHANGED, self.SaveFile )
+
+	def __del__( self ):
+		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def SaveFile( self, event ):
+		event.Skip()
 
 

@@ -167,12 +167,16 @@ def UpdateButtons(score):
         buttonList[11].Enable(False)
         if buttonList[11].GetValue():
             buttonList[11].SetValue(False)
+            buttonList[0].SetValue(True)
+            buttonList[0].SetFocus()
     else:
         for i in range(11):
             if i>=10-score:
                 buttonList[i].Enable(False)
                 if buttonList[i].GetValue():
                     buttonList[i].SetValue(False)
+                    buttonList[0].SetValue(True)
+                    buttonList[0].SetFocus()
     
 def CheckFrame():
     global CurrentPlayer, CurrentFrame, CurrentBowl
@@ -184,7 +188,20 @@ def CheckFrame():
             button.SetValue(False)
             button.Enable(False)
         m.EnterButton.Enable(False)
-        #end game
+        EndGame()
+
+def EndGame():
+    GameOver = GameOverDialog(None)
+    GameOver.Report.AppendColumn("Rank")
+    GameOver.Report.AppendColumn("Name")
+    GameOver.Report.AppendColumn("Score")
+    p = sorted(playerList, reverse=True, key = lambda x:x.Total.Value)
+    for rank, panel in enumerate(p, start = 1):
+        GameOver.Report.Append([rank, panel.PlayerNameTextBox.Value, panel.Total.Value])
+    GameOver.Report.SetColumnWidth(0, -2)
+    GameOver.Report.SetColumnWidth(1, 90)
+    GameOver.Report.SetColumnWidth(2, 90)
+    GameOver.ShowModal()
 
 NumberOfPlayers = 0
 
@@ -210,6 +227,7 @@ class mainWindow(Frames.MainFrame):
         buttonList = [self.m_radioBtn1,self.m_radioBtn2,self.m_radioBtn3,self.m_radioBtn4,self.m_radioBtn5,self.m_radioBtn6,self.m_radioBtn7,self.m_radioBtn8,self.m_radioBtn9,self.m_radioBtn10,self.m_radioBtn11,self.m_radioBtn12]
         #playerList = [self.PlayerPanel1,self.PlayerPanel2,self.PlayerPanel3,self.PlayerPanel4,self.PlayerPanel5,self.PlayerPanel6]
         buttonList[11].Enable(False)
+        buttonList[0].SetFocus()
 
     def EnterScore(self, event):
         global buttonList
@@ -227,7 +245,50 @@ class mainWindow(Frames.MainFrame):
             self.bSizer8.Add( playerList[-1], 0, wx.TOP|wx.BOTTOM|wx.LEFT|wx.EXPAND, 5 )
             playerList[-1].PlayerNameTextBox.Value = "Player {}".format(i+1)
         TotalPlayers = len(playerList)
-        print(TotalPlayers)
+        #print(TotalPlayers)
+
+    def OnKeyDown(self, event):
+        key = event.GetUnicodeKey()
+        #print(key)
+        if key==48 or key==45: #0 or - for miss
+            buttonList[0].SetValue(True)
+        elif key==49:
+            buttonList[1].SetValue(True)
+        elif key==50:
+            buttonList[2].SetValue(True)
+        elif key==51:
+            buttonList[3].SetValue(True)
+        elif key==52:
+            buttonList[4].SetValue(True)
+        elif key==53:
+            buttonList[5].SetValue(True)
+        elif key==54:
+            buttonList[6].SetValue(True)
+        elif key==55:
+            buttonList[7].SetValue(True)
+        elif key==56:
+            buttonList[8].SetValue(True)
+        elif key==57:
+            buttonList[9].SetValue(True)
+        elif key==88: #x key
+            buttonList[10].SetValue(True if buttonList[10].Enabled==True else False)
+        elif key==47:
+            buttonList[11].SetValue(True if buttonList[11].Enabled==True else False)
+        elif key==13:
+            #process enter key
+            self.EnterScore(None)
+
+    def GenerateReport(self, event):
+        EndGame()
+    def ExitProgram(self, event):
+        import sys
+        sys.exit()
+
+class GameOverDialog(Frames.GameOverDialog):
+    def __init__(self, parent):
+        Frames.GameOverDialog.__init__(self, parent)
+    def SaveFile(self, event):
+        pass
 
 app = wx.App()
 m = mainWindow(None)
