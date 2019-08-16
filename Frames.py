@@ -137,17 +137,17 @@ class MainFrame ( wx.Frame ):
 		self.PlayerPanel2 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
 		bSizer8.Add( self.PlayerPanel2, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
 
-		self.PlayerPanel21 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
-		bSizer8.Add( self.PlayerPanel21, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
+		self.PlayerPanel3 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		bSizer8.Add( self.PlayerPanel3, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
 
-		self.PlayerPanel22 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
-		bSizer8.Add( self.PlayerPanel22, 0, wx.TOP|wx.BOTTOM|wx.LEFT|wx.EXPAND, 5 )
+		self.PlayerPanel4 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		bSizer8.Add( self.PlayerPanel4, 0, wx.TOP|wx.BOTTOM|wx.LEFT|wx.EXPAND, 5 )
 
-		self.PlayerPanel23 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
-		bSizer8.Add( self.PlayerPanel23, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
+		self.PlayerPanel5 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		bSizer8.Add( self.PlayerPanel5, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
 
-		self.PlayerPanel24 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
-		bSizer8.Add( self.PlayerPanel24, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
+		self.PlayerPanel6 = PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL )
+		bSizer8.Add( self.PlayerPanel6, 0, wx.TOP|wx.BOTTOM|wx.LEFT, 5 )
 
 
 		self.m_scrolledWindow2.SetSizer( bSizer8 )
