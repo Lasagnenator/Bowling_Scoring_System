@@ -63,6 +63,7 @@ def AddScore(Score):
     DisplayScores(Score)
     if Score==10 and CurrentFrame!=10:
         CurrentBowl += 1
+        DisplayScores(0)
     CalculateSubTotals()
     DisplayTotals()
     UpdatePlayer(CurrentPlayer, Score)
@@ -97,6 +98,9 @@ def CalculateSubTotals():
         #print(b1, b2, b3, b4, b5)
         if i==10: #frame 10
             if ((b1 == b2) and (b2 == ValidScores.Strike)): #b1=b2=strike
+                #swap the comments to enable getting 330.
+                #professional bowling only goes up to 300
+                #home bowling goes up to 330.
                 Subtotal = b1 + b2 + b3
                 #Subtotal = b1 + (2 * b2) + (3 * b3)
             elif (b1 == ValidScores.Strike) and (b3 == ValidScores.Spare):
@@ -149,6 +153,9 @@ def UpdatePlayer(player, Score):
             IncrementNextPlayer()
     elif not CurrentBowl == 2:
         IncrementNextPlayer()
+    #automatically scroll to next player
+    sign = int(CurrentPlayer>0)*2-1
+    main.m_scrolledWindow2.Scroll(-1, 20*(CurrentPlayer%TotalPlayers-4)*sign)
 
 def IncrementNextPlayer():
     global CurrentPlayer, CurrentFrame, CurrentBowl
@@ -187,7 +194,7 @@ def CheckFrame():
         for button in buttonList:
             button.SetValue(False)
             button.Enable(False)
-        m.EnterButton.Enable(False)
+        main.EnterButton.Enable(False)
         EndGame()
 
 def EndGame():
@@ -199,8 +206,8 @@ def EndGame():
     for rank, panel in enumerate(p, start = 1):
         GameOver.Report.Append([rank, panel.PlayerNameTextBox.Value, panel.Total.Value])
     GameOver.Report.SetColumnWidth(0, -2)
-    GameOver.Report.SetColumnWidth(1, 90)
-    GameOver.Report.SetColumnWidth(2, 90)
+    GameOver.Report.SetColumnWidth(1, -1)
+    GameOver.Report.SetColumnWidth(2, -2)
     GameOver.ShowModal()
 
 NumberOfPlayers = 0
@@ -251,25 +258,25 @@ class mainWindow(Frames.MainFrame):
         key = event.GetUnicodeKey()
         #print(key)
         if key==48 or key==45: #0 or - for miss
-            buttonList[0].SetValue(True)
+            buttonList[0].SetValue(True if buttonList[0].Enabled==True else False)
         elif key==49:
-            buttonList[1].SetValue(True)
+            buttonList[1].SetValue(True if buttonList[1].Enabled==True else False)
         elif key==50:
-            buttonList[2].SetValue(True)
+            buttonList[2].SetValue(True if buttonList[2].Enabled==True else False)
         elif key==51:
-            buttonList[3].SetValue(True)
+            buttonList[3].SetValue(True if buttonList[3].Enabled==True else False)
         elif key==52:
-            buttonList[4].SetValue(True)
+            buttonList[4].SetValue(True if buttonList[4].Enabled==True else False)
         elif key==53:
-            buttonList[5].SetValue(True)
+            buttonList[5].SetValue(True if buttonList[5].Enabled==True else False)
         elif key==54:
-            buttonList[6].SetValue(True)
+            buttonList[6].SetValue(True if buttonList[6].Enabled==True else False)
         elif key==55:
-            buttonList[7].SetValue(True)
+            buttonList[7].SetValue(True if buttonList[7].Enabled==True else False)
         elif key==56:
-            buttonList[8].SetValue(True)
+            buttonList[8].SetValue(True if buttonList[8].Enabled==True else False)
         elif key==57:
-            buttonList[9].SetValue(True)
+            buttonList[9].SetValue(True if buttonList[9].Enabled==True else False)
         elif key==88: #x key
             buttonList[10].SetValue(True if buttonList[10].Enabled==True else False)
         elif key==47:
@@ -288,13 +295,22 @@ class GameOverDialog(Frames.GameOverDialog):
     def __init__(self, parent):
         Frames.GameOverDialog.__init__(self, parent)
     def SaveFile(self, event):
-        pass
+        text = ""
+        text += """name,f1b1,f1b2,f2b1,f2b2,f3b1,f3b2,f4b1,f4b2,f5b1,f5b2,f6b1,f6b2,f7b1,f7b2,f8b1,f8b2,f9b1,f9b2,f10b1,f10b2,f10b3\n"""
+        for i, player in enumerate(playerList):
+            text += """{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},
+""".format(player.PlayerNameTextBox.Value,
+           *[SelectBowl(i,b//2+1, b%2+1).Value for b in range(0,19)],
+           *[SelectBowl(i,10,b).Value for b in [1,2,3]])
+        #print(text)
+        with open(self.FilePick.Path, "w") as f:
+            f.write(text)
 
 app = wx.App()
-m = mainWindow(None)
-PlayerNumbers = NumberOfPlayersFrame(m)
+main = mainWindow(None)
+PlayerNumbers = NumberOfPlayersFrame(main)
 PlayerNumbers.ShowModal()
 PlayerNumbers.Show(False)
 if not early_exit:
-    m.Show(True)
+    main.Show(True)
     app.MainLoop()
