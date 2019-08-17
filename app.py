@@ -61,7 +61,7 @@ def SelectBowl(player, frame, bowl):
 def AddScore(Score):
     global CurrentPlayer, CurrentFrame, CurrentBowl
     DisplayScores(Score)
-    if Score==10 and CurrentFrame!=10:
+    if Score==ValidScores.Strike and CurrentFrame!=10:
         CurrentBowl += 1
         DisplayScores(0)
     CalculateSubTotals()
@@ -98,11 +98,8 @@ def CalculateSubTotals():
         #print(b1, b2, b3, b4, b5)
         if i==10: #frame 10
             if ((b1 == b2) and (b2 == ValidScores.Strike)): #b1=b2=strike
-                #swap the comments to enable getting 330.
-                #professional bowling only goes up to 300
                 #home bowling goes up to 330.
-                Subtotal = b1 + b2 + b3
-                #Subtotal = b1 + (2 * b2) + (3 * b3)
+                Subtotal = b1 + (2 * b2) + (3 * b3)
             elif (b1 == ValidScores.Strike) and (b3 == ValidScores.Spare):
                 Subtotal = b1 + 20
             elif b1 == ValidScores.Strike:
