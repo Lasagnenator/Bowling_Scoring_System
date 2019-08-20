@@ -323,6 +323,7 @@ class GameOverDialog(Frames.GameOverDialog):
         #print(text)
         with open(self.FilePick.Path, "w") as f:
             f.write(text)
+        wx.MessageBox("File saved.", "Info")
 
 app = wx.App()
 main = mainWindow(None)
