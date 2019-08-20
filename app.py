@@ -37,7 +37,7 @@ TextToScore= {"":0,
               "X":10,
               "/":11}
 
-#this just makes score tests readable later on.
+#this just makes score testing readable later on.
 class ValidScores():
     Miss = 0
     One = 1
@@ -115,7 +115,9 @@ def CalculateSubTotals():
             else: #no spare or strike
                 Subtotal = b1 + b2
         else: #all other frames have the same cases
-            if (b1 == b3) and (b3 == ValidScores.Strike): #b1=b3=strike
+            if (b1 == b3) and (b3 == b4) and (b4 == ValidScores.Strike):
+                Subtotal = b1 + b3 + b4
+            elif (b1 == b3) and (b3 == ValidScores.Strike): #b1=b3=strike
                 Subtotal = b1 + b3 + b5
             elif (b1 == ValidScores.Strike) and (b4 == ValidScores.Spare): #b1=strike and b4=spare
                 Subtotal = b1 + 10 #spare is counted as 11
@@ -297,7 +299,7 @@ class mainWindow(Frames.MainFrame):
             buttonList[9].SetValue(True if buttonList[9].Enabled==True else False)
         elif key==88: #x key
             buttonList[10].SetValue(True if buttonList[10].Enabled==True else False)
-        elif key==47:
+        elif key==47: #/ key
             buttonList[11].SetValue(True if buttonList[11].Enabled==True else False)
         elif key==13:
             #process enter key
@@ -321,16 +323,23 @@ class GameOverDialog(Frames.GameOverDialog):
            *[SelectBowl(i,b//2+1, b%2+1).Value for b in range(0,19)],
            *[SelectBowl(i,10,b).Value for b in [1,2,3]])
         #print(text)
-        with open(self.FilePick.Path, "w") as f:
-            f.write(text)
+        try:
+            with open(self.FilePick.Path, "w") as f:
+                f.write(text)
+        except: #invalid write permissions
+            wx.MessageBox("Invalid write permissions to specified location", "Error", style=wx.CENTER|wx.ICON_ERROR)
+            return
         wx.MessageBox("File saved.", "Info")
 
-app = wx.App()
-main = mainWindow(None)
-PlayerNumbers = NumberOfPlayersFrame(main)
-#showmodal stops execution here
-PlayerNumbers.ShowModal()
-PlayerNumbers.Show(False)
-if not early_exit:
-    main.Show(True)
-    app.MainLoop()
+try:
+    app = wx.App()
+    main = mainWindow(None)
+    PlayerNumbers = NumberOfPlayersFrame(main)
+    #showmodal stops execution here
+    PlayerNumbers.ShowModal()
+    PlayerNumbers.Show(False)
+    if not early_exit:
+        main.Show(True)
+        app.MainLoop()
+except: #something bad happened
+    wx.MessageBox("Fatal Error!")
