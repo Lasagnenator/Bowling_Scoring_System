@@ -4,10 +4,12 @@ import wx
 buttonList = []
 playerList = []
 
+#zero indexed player
 CurrentPlayer = 0
 CurrentFrame = 1
 CurrentBowl = 1
 
+#these dictionaries are for conversion between text displayed and internal representation
 ScoreToText= {0:"-",
               1:"1",
               2:"2",
@@ -35,6 +37,7 @@ TextToScore= {"":0,
               "X":10,
               "/":11}
 
+#this just makes score tests readable later on.
 class ValidScores():
     Miss = 0
     One = 1
@@ -59,6 +62,7 @@ def SelectBowl(player, frame, bowl):
     return eval("playerList[{}].Frame{}.Bowl{}".format(player, frame, bowl))
 
 def AddScore(Score):
+    #main function to be called when enter button clicked
     global CurrentPlayer, CurrentFrame, CurrentBowl
     DisplayScores(Score)
     if Score==ValidScores.Strike and CurrentFrame!=10:
@@ -71,10 +75,12 @@ def AddScore(Score):
     CheckFrame()
 
 def DisplayScores(Score):
+    #updates the textbox for the latest score
     global CurrentPlayer, CurrentFrame, CurrentBowl
     SelectBowl(CurrentPlayer, CurrentFrame, CurrentBowl).Value = ScoreToText[Score]
 
 def CalculateSubTotals():
+    #this handles every case for the scores
     global CurrentPlayer, CurrentFrame, CurrentBowl
     for i in range(1, CurrentFrame+1):
         Subtotal = 0
@@ -83,10 +89,10 @@ def CalculateSubTotals():
             b2 = TextToScore[SelectBowl(CurrentPlayer, i, 2).Value]
             b3 = TextToScore[SelectBowl(CurrentPlayer, i, 3).Value]
             b4 = b5 = 0
-        elif i == 9:
+        elif i == 9: #Frame 9
             b1 = TextToScore[SelectBowl(CurrentPlayer, i, 1).Value]
             b2 = TextToScore[SelectBowl(CurrentPlayer, i, 2).Value]
-            b3 = TextToScore[SelectBowl(CurrentPlayer, i+1, 1).Value]
+            b3 = TextToScore[SelectBowl(CurrentPlayer, i+1, 1).Value] #i+1 means the next frame
             b4 = TextToScore[SelectBowl(CurrentPlayer, i+1, 2).Value]
             b5 = TextToScore[SelectBowl(CurrentPlayer, i+1, 3).Value]
         else:
@@ -94,32 +100,30 @@ def CalculateSubTotals():
             b2 = TextToScore[SelectBowl(CurrentPlayer, i, 2).Value]
             b3 = TextToScore[SelectBowl(CurrentPlayer, i+1, 1).Value]
             b4 = TextToScore[SelectBowl(CurrentPlayer, i+1, 2).Value]
-            b5 = TextToScore[SelectBowl(CurrentPlayer, i+2, 1).Value]
+            b5 = TextToScore[SelectBowl(CurrentPlayer, i+2, 1).Value] #i+2 means the frame after next
         #print(b1, b2, b3, b4, b5)
-        if i==10: #frame 10
+        if i==10: #frame 10 special cases
             if ((b1 == b2) and (b2 == ValidScores.Strike)): #b1=b2=strike
                 #home bowling goes up to 330.
                 Subtotal = b1 + (2 * b2) + (3 * b3)
-            elif (b1 == ValidScores.Strike) and (b3 == ValidScores.Spare):
-                Subtotal = b1 + 20
-            elif b1 == ValidScores.Strike:
+            elif (b1 == ValidScores.Strike) and (b3 == ValidScores.Spare): #b1=strike and b2=spare
+                Subtotal = b1 + 20 #because spares are represented as 11
+            elif b1 == ValidScores.Strike: #b1=strike
                 Subtotal = b1 + (2 * (b2 + b3))
-            elif b2 == ValidScores.Spare:
-                Subtotal = 10 + (2 * b3)
-            else:
+            elif b2 == ValidScores.Spare: #b2=spare
+                Subtotal = 10 + (2 * b3) #again because spares are represented as 11
+            else: #no spare or strike
                 Subtotal = b1 + b2
-        else:
-            if (b1 == b3) and (b3 == b4) and (b4 == ValidScores.Strike):
-                Subtotal = b1 + b3 + b4
-            elif (b1 == b3) and (b3 == ValidScores.Strike):
+        else: #all other frames have the same cases
+            if (b1 == b3) and (b3 == ValidScores.Strike): #b1=b3=strike
                 Subtotal = b1 + b3 + b5
-            elif (b1 == ValidScores.Strike) and (b4 == ValidScores.Spare):
-                Subtotal = b1 + 10
-            elif (b1 == ValidScores.Strike):
+            elif (b1 == ValidScores.Strike) and (b4 == ValidScores.Spare): #b1=strike and b4=spare
+                Subtotal = b1 + 10 #spare is counted as 11
+            elif (b1 == ValidScores.Strike): #b1=strike
                 Subtotal = b1 + b3 + b4
-            elif (b2 == ValidScores.Spare):
+            elif (b2 == ValidScores.Spare): #b2=spare
                 Subtotal = 10 + b3
-            else:
+            else: #no spare or strike
                 Subtotal = b1+b2
         #print(Subtotal)
         DisplaySubTotals(Subtotal, i)
@@ -128,6 +132,7 @@ def CalculateSubTotals():
 PreviousSubTotals = [0]*10
 
 def DisplaySubTotals(Subtotal, Frame):
+    #calculates each subtotal for the current player up to the specified frame
     global PreviousSubTotals
     PreviousSubTotals[Frame-1] = Subtotal
     #print(PreviousSubTotals)
@@ -136,6 +141,7 @@ def DisplaySubTotals(Subtotal, Frame):
     SelectFrame(SelectPlayer(CurrentPlayer), Frame).SubTotal.Value = str(Subtotal)
 
 def DisplayTotals():
+    #updates the total score of current player
     global PreviousSubTotals
     total = 0
     for score in PreviousSubTotals:
@@ -143,6 +149,7 @@ def DisplayTotals():
     SelectPlayer(CurrentPlayer).Total.Value = str(total)
     
 def UpdatePlayer(player, Score):
+    #increments to next player when needed
     global CurrentPlayer, CurrentFrame, CurrentBowl
     CurrentBowl += 1
     if ((Score == ValidScores.Strike) and (not (CurrentBowl == 4))) or (CurrentBowl == 3):
@@ -150,6 +157,7 @@ def UpdatePlayer(player, Score):
             IncrementNextPlayer()
     elif not CurrentBowl == 2:
         IncrementNextPlayer()
+        
     #automatically scroll to next player
     sign = int(CurrentPlayer>0)*2-1
     main.m_scrolledWindow2.Scroll(-1, 20*(CurrentPlayer%TotalPlayers-4)*sign)
@@ -165,6 +173,7 @@ def EarnedFrame10():
     return t1 or t2
 
 def UpdateButtons(score):
+    #disables buttons that need to be disabled
     for button in buttonList:
         button.Enable(True)
     if (CurrentBowl == 1) or (score == ValidScores.Strike) or (score == ValidScores.Spare):
@@ -183,6 +192,7 @@ def UpdateButtons(score):
                     buttonList[0].SetFocus()
     
 def CheckFrame():
+    #checks for end of game and increments to next frame when needed.
     global CurrentPlayer, CurrentFrame, CurrentBowl
     if CurrentPlayer >= TotalPlayers:
         CurrentPlayer = 0
@@ -195,11 +205,14 @@ def CheckFrame():
         EndGame()
 
 def EndGame():
+    #This just generates a report
     GameOver = GameOverDialog(None)
     GameOver.Report.AppendColumn("Rank")
     GameOver.Report.AppendColumn("Name")
     GameOver.Report.AppendColumn("Score")
-    p = sorted(playerList, reverse=True, key = lambda x:x.Total.Value)
+    #sort the players by their total score
+    #if a tie, the order is somewhat random
+    p = sorted(playerList, reverse=True, key = lambda x:int(x.Total.Value))
     for rank, panel in enumerate(p, start = 1):
         GameOver.Report.Append([rank, panel.PlayerNameTextBox.Value, panel.Total.Value])
     GameOver.Report.SetColumnWidth(0, -2)
@@ -229,31 +242,39 @@ class mainWindow(Frames.MainFrame):
         global CurrentPlayer, CurrentFrame, CurrentBowl, TotalPlayers
         Frames.MainFrame.__init__(self, parent)
         buttonList = [self.m_radioBtn1,self.m_radioBtn2,self.m_radioBtn3,self.m_radioBtn4,self.m_radioBtn5,self.m_radioBtn6,self.m_radioBtn7,self.m_radioBtn8,self.m_radioBtn9,self.m_radioBtn10,self.m_radioBtn11,self.m_radioBtn12]
-        #playerList = [self.PlayerPanel1,self.PlayerPanel2,self.PlayerPanel3,self.PlayerPanel4,self.PlayerPanel5,self.PlayerPanel6]
+        #we don't define the playerList here as it it dynamically added
+        #disable spare as it is impossible to start with a spare
         buttonList[11].Enable(False)
+        #highlight the miss button, allows for keyboard input instantly
         buttonList[0].SetFocus()
 
     def EnterScore(self, event):
         global buttonList
         #this lets us iterate over the buttons but not have to increment a counter as
-        #automatically does this for us
+        #enumerate automatically does this for us
         for i, button in enumerate(buttonList):
             if button.GetValue():
                 AddScore(i)
+                break #break to exit the loop early as there should not be anymore buttons pressed at the time
 
     def OnShow(self, event):
+        #this handles the dynamic adding of players
         global NumberOfPlayers
         global playerList, TotalPlayers
         for i in range(NumberOfPlayers):
             playerList.append(Frames.PlayerPanel( self.m_scrolledWindow2, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,90 ), wx.BORDER_NONE|wx.TAB_TRAVERSAL ))
             self.bSizer8.Add( playerList[-1], 0, wx.TOP|wx.BOTTOM|wx.LEFT|wx.EXPAND, 5 )
+            #set the player names to what number they are
             playerList[-1].PlayerNameTextBox.Value = "Player {}".format(i+1)
         TotalPlayers = len(playerList)
         #print(TotalPlayers)
 
     def OnKeyDown(self, event):
+        #keyboard controls
         key = event.GetUnicodeKey()
         #print(key)
+        #these numbers came from doing a print(key) then writing it down
+        #the inline if statements make sure that a button can only be pressed if it is enabled.
         if key==48 or key==45: #0 or - for miss
             buttonList[0].SetValue(True if buttonList[0].Enabled==True else False)
         elif key==49:
@@ -306,6 +327,7 @@ class GameOverDialog(Frames.GameOverDialog):
 app = wx.App()
 main = mainWindow(None)
 PlayerNumbers = NumberOfPlayersFrame(main)
+#showmodal stops execution here
 PlayerNumbers.ShowModal()
 PlayerNumbers.Show(False)
 if not early_exit:
