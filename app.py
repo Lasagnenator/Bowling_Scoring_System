@@ -64,6 +64,10 @@ def SelectBowl(player, frame, bowl):
 def AddScore(Score):
     #main function to be called when enter button clicked
     global CurrentPlayer, CurrentFrame, CurrentBowl
+
+    #un-highlight the current player
+    SelectPlayer(CurrentPlayer).PlayerNameTextBox.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
+    
     DisplayScores(Score)
     if Score==ValidScores.Strike and CurrentFrame!=10:
         CurrentBowl += 1
@@ -73,6 +77,9 @@ def AddScore(Score):
     UpdatePlayer(CurrentPlayer, Score)
     UpdateButtons(Score)
     CheckFrame()
+
+    #highlight the next player's turn
+    SelectPlayer(CurrentPlayer).PlayerNameTextBox.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
 
 def DisplayScores(Score):
     #updates the textbox for the latest score
@@ -115,7 +122,7 @@ def CalculateSubTotals():
             else: #no spare or strike
                 Subtotal = b1 + b2
         else: #all other frames have the same cases
-            if (b1 == b3) and (b3 == b4) and (b4 == ValidScores.Strike):
+            if (b1 == b3) and (b3 == b4) and (b4 == ValidScores.Strike): #frame 9 all strikes
                 Subtotal = b1 + b3 + b4
             elif (b1 == b3) and (b3 == ValidScores.Strike): #b1=b3=strike
                 Subtotal = b1 + b3 + b5
@@ -152,7 +159,8 @@ def DisplayTotals():
     
 def UpdatePlayer(player, Score):
     #increments to next player when needed
-    global CurrentPlayer, CurrentFrame, CurrentBowl
+    global CurrentPlayer, CurrentFrame, CurrentBowl    
+    
     CurrentBowl += 1
     if ((Score == ValidScores.Strike) and (not (CurrentBowl == 4))) or (CurrentBowl == 3):
         if not ((CurrentFrame == 10) and (EarnedFrame10())):
@@ -163,6 +171,8 @@ def UpdatePlayer(player, Score):
     #automatically scroll to next player
     sign = int(CurrentPlayer>0)*2-1
     main.m_scrolledWindow2.Scroll(-1, 20*(CurrentPlayer%TotalPlayers-4)*sign)
+
+    
 
 def IncrementNextPlayer():
     global CurrentPlayer, CurrentFrame, CurrentBowl
@@ -271,6 +281,9 @@ class mainWindow(Frames.MainFrame):
         TotalPlayers = len(playerList)
         #print(TotalPlayers)
 
+        #highlight player 1 as they are the first player to bowl
+        SelectPlayer(0).PlayerNameTextBox.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+
     def OnKeyDown(self, event):
         #keyboard controls
         key = event.GetUnicodeKey()
@@ -341,5 +354,6 @@ try:
     if not early_exit:
         main.Show(True)
         app.MainLoop()
-except: #something bad happened
+except BaseException as e: #something bad happened
+    print(e)
     wx.MessageBox("Fatal Error!")

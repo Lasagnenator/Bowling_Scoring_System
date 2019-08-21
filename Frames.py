@@ -300,7 +300,8 @@ class PlayerPanel ( wx.Panel ):
 
         bSizer1 = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.PlayerNameTextBox = wx.TextCtrl( self, wx.ID_ANY, u"Player 1", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.PlayerNameTextBox = wx.TextCtrl( self, wx.ID_ANY, u"Player 1", wx.DefaultPosition, wx.DefaultSize, wx.TE_RICH )
+        self.PlayerNameTextBox.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
         self.PlayerNameTextBox.SetMaxSize( wx.Size( -1,35 ) )
 
         bSizer1.Add( self.PlayerNameTextBox, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
